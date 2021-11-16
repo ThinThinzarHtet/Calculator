@@ -12,8 +12,41 @@
 
     /* text */
     --verydarkgrayishblue: hsl(221, 14%, 31%);
-    --white: rgb(255, 255, 255);
+    --white: #ffffff; /*for text*/
+    --palewhite: hsla(0, 0%, 100%, 0.75);
+    
+    /* for theme 2 */
 
+    --mainbg2: hsl(0, 0%, 90%);
+    --togglebg2: hsl(0, 5%, 81%);
+    --screenbg2: hsl(0, 0%, 93%);
+
+    --delkeybg2: hsl(185, 42%, 37%);
+    --delkeyshadow2: hsl(185, 58%, 25%);
+    --redkeybg2: hsl(25, 98%, 40%);
+    --redkeyshadow2: hsl(25, 99%, 27%);
+    --keybg2: hsl(45, 7%, 89%);
+    --keyshadow2: hsl(35, 11%, 61%);
+
+    /* text */
+    --verydarkgrayishyellow: hsl(60, 10%, 19%);
+   
+
+    /* for theme 3 */
+    --mainbg3: hsl(268, 75%, 9%);
+    --togglebg3: hsl(268, 71%, 12%); /*both togglebg, screenbg and keypad bg*/
+
+    --delkeybg3: hsl(281, 89%, 26%);
+    --delkeyshadow3: hsl(285, 91%, 52%);
+    --redkeybg3: hsl(176, 100%, 44%);
+    --redkeyshadow3: hsl(177, 92%, 70%);
+    --keybg3: hsl(268, 47%, 21%);
+    --keyshadow3: hsl(290, 70%, 36%);
+
+    /* text and number */
+    --lightyellow: hsl(52, 100%, 62%);
+    --verydarkblue: hsl(198, 20%, 13%); /*for equal*/
+   
 
 }
 
@@ -30,6 +63,14 @@ body {
     height: 100vh; */
 }
 
+body.active {
+    background-color: var(--mainbg2);
+}
+
+body.active2 {
+    background-color: var(--mainbg3);
+}
+
 .wrapper {
     width: 500px;
     min-height: 100vh;
@@ -37,21 +78,31 @@ body {
     margin: 20vh auto;
     border: 1px solid black;
 
-    /* transition: 0.5s; */
+    transition: 0.5s;
     /* display: flex;
     justify-content: center;
     align-items: center; */
+}
+
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px 25px;
+    
 }
 
 .header > * {
     color: var(--white);
 }
 
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.header.active > * {
+    color: var(--verydarkgrayishyellow);
+}
+
+.header.active2 > * {
+    color: var(--lightyellow);
 }
 
 .header h2 {
@@ -88,7 +139,7 @@ body {
     height: 20px;
     cursor: pointer;
     
-    background: var(--togglebg);
+    background-color: var(--togglebg);
     border-radius: 30px;
 
     transition: 0.5s;
@@ -97,6 +148,14 @@ body {
     box-shadow: inset 0 2px 15px rgba(0,0,0,0.1),
                 inset 0 2px 2px rgba(0,0,0,0.1),
                 inset 0 -4px 4px rgba(0,0,0,0.1);
+}
+
+#toggle.active {
+    background-color: var(--togglebg2);
+}
+
+#toggle.active2 {
+    background-color: var(--togglebg3);
 }
 
 #toggle .indicator {
@@ -116,13 +175,147 @@ body {
 /* when we click toggle button */
 #toggle.active .indicator {
     left: 23px;
+    background-color: var(--redkeybg2);
+    box-shadow: inset 0 -2px 2px var(--redkeyshadow2);
 }
 
 #toggle.active2 .indicator {
     left: 42px;
+    background-color: var(--redkeybg3);
+    box-shadow: inset 0 -2px 2px var(--redkeyshadow)3;
+   
 }
 
+/* calculator */
+/* .calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+   
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+} */
 
+/* .btn-wrapper {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    width: 400px;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    grid-template-rows: repeat(5, 100px);
+
+    background-color: black;
+} */
+
+/* .btn-wrapper .btn {
+    
+    width: 400px;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    grid-template-rows: repeat(5, 100px);
+
+    background-color: black;
+} */
+
+/* .calculator-grid > button {
+    cursor: pointer;
+    font-size: 32px;
+    border: 1px solid black;
+    outline: none;
+    background-color: var(--keybg);
+    box-shadow: inset 0 -2px 2px var(--keyshadow);
+}
+
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+    grid-column: span 2;
+} */
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+}
+
+.btn-wrapper {
+    background-color: var(--togglebg);
+    margin-top: 25px;
+    border-radius: 10px;
+    /* height: 100vh; */
+}
+
+.btn-wrapper .btn {
+    padding: 25px;
+}
+
+.btn {
+    display: grid;
+    /* min-height: 100vh; */
+    grid-template-columns: repeat(4,90px);
+    grid-template-rows: repeat(5, 50px);
+    column-gap: 15px;
+    row-gap: 15px;
+}
+
+.btn > button {
+    font-family: 'Spartan', sans-serif;
+    cursor: pointer;
+    font-size: 32px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background-color: var(--keybg);
+    box-shadow: inset 0 -3px 2px var(--keyshadow);
+}
+
+.btn > button:hover {
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.btn .delete {
+    background-color: var(--delkeybg);
+    box-shadow: inset 0 -3px 2px var(--delkeyshadow);
+    color: var(--white);
+    font-size: 16px;
+}
+/* output section */
+.output {
+    /* grid-row: 1; */
+    grid-template-rows: minmax(120px, auto);
+    grid-column: 1 / -1;
+    background-color: var(--screenbg);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+    border-radius: 10px;
+}
+
+.output .previous-num {
+    color: var(--palewhite);
+    font-size: 20px;
+    margin-bottom: 23px;
+}
+
+.output .current-num {
+    color: var(--white);
+    font-size: 32px;
+}
 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
