@@ -19,7 +19,7 @@
 
     --mainbg2: hsl(0, 0%, 90%);
     --togglebg2: hsl(0, 5%, 81%);
-    --screenbg2: hsl(0, 0%, 93%);
+    --screenbg2: hsl(0, 5%, 96%);
 
     --delkeybg2: hsl(185, 42%, 37%);
     --delkeyshadow2: hsl(185, 58%, 25%);
@@ -61,6 +61,7 @@ body {
     font-family: 'Spartan', sans-serif;
     /* width: 100%;
     height: 100vh; */
+    height: 100vh;
 }
 
 body.active {
@@ -73,10 +74,9 @@ body.active2 {
 
 .wrapper {
     width: 500px;
-    min-height: 100vh;
 
     margin: 20vh auto;
-    border: 1px solid black;
+    /* border: 1px solid transparent; */
 
     transition: 0.5s;
     /* display: flex;
@@ -90,6 +90,7 @@ body.active2 {
     justify-content: center;
     align-items: center;
     padding: 0 30px 25px;
+   
     
 }
 
@@ -238,10 +239,12 @@ body.active2 {
     grid-column: span 2;
 } */
 
-.calculator-grid {
-    display: grid;
+.calculator-flex {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     /* min-height: 100vh; */
 }
 
@@ -252,6 +255,14 @@ body.active2 {
     /* height: 100vh; */
 }
 
+.btn-wrapper.active {
+    background-color: var(--togglebg2);
+}
+
+.btn-wrapper.active2 {
+    background-color: var(--togglebg3);
+}
+
 .btn-wrapper .btn {
     padding: 25px;
 }
@@ -259,6 +270,7 @@ body.active2 {
 .btn {
     display: grid;
     /* min-height: 100vh; */
+    justify-content: center;
     grid-template-columns: repeat(4,90px);
     grid-template-rows: repeat(5, 50px);
     column-gap: 15px;
@@ -269,11 +281,24 @@ body.active2 {
     font-family: 'Spartan', sans-serif;
     cursor: pointer;
     font-size: 32px;
+    color: var(--verydarkgrayishblue);
     border: none;
     border-radius: 10px;
     outline: none;
     background-color: var(--keybg);
     box-shadow: inset 0 -3px 2px var(--keyshadow);
+}
+
+.btn.active > button {
+    background-color: var(--keybg2);
+    color: var(--verydarkgrayishyellow);
+    box-shadow: inset 0 -3px 2px var(--keyshadow2);
+}
+
+.btn.active2 > button {
+    background-color: var(--keybg3);
+    color: var(--lightyellow);
+    box-shadow: inset 0 -3px 2px var(--keyshadow3);
 }
 
 .btn > button:hover {
@@ -290,11 +315,69 @@ body.active2 {
     color: var(--white);
     font-size: 16px;
 }
+
+.btn .delete:hover {
+    background-color: hsla(225, 21%, 49%, 0.9);
+}
+
+.btn .equal {
+    background-color: var(--redkeybg);
+    box-shadow: inset 0 -3px 2px var(--redkeyshadow);
+    color: var(--white);
+    font-size: 16px;
+}
+
+.btn .equal:hover {
+    background-color: rgba(147, 38, 26, 0.95);
+}
+
+/* theme2 btn */
+.btn.active .delete {
+    background-color: var(--delkeybg2);
+    box-shadow: inset 0 -3px 2px var(--delkeyshadow2);
+}
+
+.btn.active .delete:hover {
+    background-color: hsl(185, 58%, 25%, 0.9);
+}
+
+.btn.active .equal {
+    background-color: var(--redkeybg2);
+    box-shadow: inset 0 -3px 2px var(--redkeyshadow2);
+}
+
+.btn.active .equal:hover {
+    background-color: hsl(25, 99%, 27%, 0.9);
+}
+
+/* theme3 btn */
+
+.btn.active2 > button:hover {
+    background-color: rgba(185, 97, 214, 0.65);
+}
+.btn.active2 .delete {
+    background-color: var(--delkeybg3);
+    box-shadow: inset 0 -3px 2px var(--delkeyshadow3);
+}
+
+.btn.active2 .delete:hover {
+    background-color: hsl(285, 91%, 52%, 0.65);
+}
+
+.btn.active2 .equal {
+    background-color: var(--redkeybg3);
+    box-shadow: inset 0 -3px 2px var(--redkeyshadow3);
+}
+
+.btn.active2 .equal:hover {
+    background-color: hsl(177, 92%, 70%, 0.65);
+}
 /* output section */
 .output {
     /* grid-row: 1; */
-    grid-template-rows: minmax(120px, auto);
-    grid-column: 1 / -1;
+    /* grid-template-rows: minmax(120px, auto);
+    grid-column: 1 / -1; */
+    width: 92%;
     background-color: var(--screenbg);
     display: flex;
     align-items: flex-end;
@@ -306,6 +389,15 @@ body.active2 {
     border-radius: 10px;
 }
 
+.output.active {
+    background-color: var(--screenbg2);
+    color: var(--verydarkgrayishyellow);
+}
+
+.output.active2 {
+    background-color: var(--togglebg3);
+}
+
 .output .previous-num {
     color: var(--palewhite);
     font-size: 20px;
@@ -315,7 +407,29 @@ body.active2 {
 .output .current-num {
     color: var(--white);
     font-size: 32px;
+    margin: 20px 15px;
 }
 
-.attribution { font-size: 11px; text-align: center; }
+.output.active .previous-num {
+    color: hsl(221, 14%, 31%, 0.75);
+}
+
+.output.active .current-num {
+    color: var(--verydarkgrayishyellow);
+}
+
+.output.active2 .previous-num {
+    color: hsl(52, 100%, 62%, 0.75);
+}
+
+.output.active2 .current-num {
+    color: var(--lightyellow);
+}
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+    margin-top: 25px;
+
+}
 .attribution a { color: hsl(228, 45%, 44%); }
