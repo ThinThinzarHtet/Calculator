@@ -45,71 +45,35 @@ toggle.onclick = function(){
     }   
 }
 
-// calculation
-
-class Calculator {
-    constructor(previousNumText, currentNumText) {
-        this.previousNumText = previousNumText;
-        this.currentNumText = currentNumText;
-
-        this.reset();
-        
-    }
-
-    reset() {
-        this.currentnum = '';
-        this.prevnum = '';
-        this.operation = undefined;
-        
-    }
-
-    delete() {
-
-    }
-
-    appendNumber(number) {
-        if (number === '.' && this.currentnum.includes('.')) return //if . contain program stops
-        this.currentnum = this.currentnum.toString() + number.toString();
-    }
-
-    chooseOperation(operation) {
-
-    }
-
-    compute() {
-
-    }
-
-    updateDisplay() {
-        this.currentNumText.innerText = this.currentnum
-    }
-}
-
+const screen = document.getElementById('screen');
 const numberBtn = document.querySelectorAll('[data-number]');
-const operationBtn = document.querySelectorAll('[data-operation]');
-const equalBtn = document.querySelector('[data-equal]')
-const deleteBtn = document.querySelector('[data-delete]')
-const resetBtn = document.querySelector('[data-reset]')
-const previousNumText = document.querySelector('[data-prevnum]')
-const currentNumText = document.querySelector('[data-currentnum]')
+const operator = document.querySelectorAll('[data-operation]');
+const resetBtn = document.querySelector('[data-reset]');
+const equalBtn = document.querySelector('[data-equal]');
 
-const currentnum = document.querySelector('[data-currentnum]').innerHTML;
-
-const calculator = new Calculator(previousNumText, currentNumText)
-
-numberBtn.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.appendNumber(button.innerText)
-        calculator.updateDisplay()
-    })
+numberBtn.forEach(number => {
+    number.onclick = () => 
+        (screen.innerText = screen.innerText !== "0" ? screen.innerText + number.innerText : number.innerText); //shorthand if statement
+    
 })
 
-operationBtn.forEach(button => {
-    button.addEventListener('ckick', () => {
-        calculator.chooseOperation(button.innerText)
-        calculator.updateDisplay()
-    })
+operator.forEach(number => {
+    number.onclick = () => (screen.innerText = screen.innerText + number.innerText);
 })
+
+resetBtn.addEventListener('click', () => {
+    screen.innerText = '0'
+})
+
+// resetBtn.onclick = () => {
+//     screen.innerText = '0';
+// }
+
+
+
+
+
+
 
 
 

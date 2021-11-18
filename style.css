@@ -378,6 +378,7 @@ body.active2 {
     /* grid-template-rows: minmax(120px, auto);
     grid-column: 1 / -1; */
     width: 92%;
+    height: 100px;
     background-color: var(--screenbg);
     display: flex;
     align-items: flex-end;
