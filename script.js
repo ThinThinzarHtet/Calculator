@@ -46,30 +46,55 @@ toggle.onclick = function(){
 }
 
 const screen = document.getElementById('screen');
+
 const numberBtn = document.querySelectorAll('[data-number]');
 const operator = document.querySelectorAll('[data-operation]');
 const resetBtn = document.querySelector('[data-reset]');
 const equalBtn = document.querySelector('[data-equal]');
+const delBtn = document.querySelector('[data-delete]');
+const decimal = document.querySelector('.decimal');
+
 
 numberBtn.forEach(number => {
-    number.onclick = () => 
-        (screen.innerText = screen.innerText !== "0" ? screen.innerText + number.innerText : number.innerText); //shorthand if statement
-    
+    number.addEventListener('click', () => {
+       screen.innerText = screen.innerText !== "0" ? screen.innerText + number.innerText : number.innerText; 
+    })
 })
 
 operator.forEach(number => {
-    number.onclick = () => (screen.innerText = screen.innerText + number.innerText);
+    number.onclick = () => {
+        if (number.innerText!== 'x') {
+            screen.innerText = screen.innerText + number.innerText;
+        } else {
+            var multiply = '*';
+            screen.innerText = screen.innerText + multiply;
+        }               
+    }
+   
+})
+
+decimal.addEventListener('click', () => {
+    if (!screen.innerText.includes('.')) {
+        screen.innerText += '.';
+    }   
+})
+
+equalBtn.addEventListener('click', () => {
+    (screen.innerText) ? screen.innerText = eval(screen.innerText) : false;
 })
 
 resetBtn.addEventListener('click', () => {
-    screen.innerText = '0'
+    screen.innerText = '0';
 })
 
-// resetBtn.onclick = () => {
-//     screen.innerText = '0';
-// }
-
-
+delBtn.addEventListener('click', () => {
+    var displayValue = screen.innerText.substring(0, screen.innerText.length - 1);
+    if (displayValue === '') {
+        screen.innerText = '0';
+    } else {
+        screen.innerText = displayValue;
+    }    
+})
 
 
 
